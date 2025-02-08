@@ -1,0 +1,61 @@
+<configuration>
+    <property name="LOGS" value="./logs"/>
+    <property name="ENC_PATTERN" value="%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n"/>
+
+    <!--Апендер для вывода в консоль-->
+    <appender name="GENERAL_CONSOLE_APPENDER" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${ENC_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!--Апендер для вывода в файл общих логов-->
+    <appender name="GENERAL_FILE_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS}/archived/application-logger-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>1MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${ENC_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!--Апендер для вывода в файл логов request и response-->
+    <appender name="REQUEST_RESPONSE_FILE_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS}/archived/request-response-logger.log-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>1MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${ENC_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!--Логер для request-->
+    <!--Указываю additivity=false чтобы не было наследования от корневого логера-->
+    <logger name="org.javaguru.travel.insurance.controller.TravelCalculateRequestLogger"
+            level="info"
+            additivity="false">
+        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER"/>
+    </logger>
+
+    <!--Логер для response-->
+    <!--Указываю additivity=false чтобы не было наследования от корневого логера-->
+    <logger name="org.javaguru.travel.insurance.controller.TravelCalculateResponseLogger"
+            level="info"
+            additivity="false">
+        <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER"/>
+    </logger>
+
+    <!--Корневой логер (если у логера нет подходящего апендера, то отправляется сюда)-->
+    <root level="INFO">
+        <appender-ref ref="GENERAL_CONSOLE_APPENDER"/>
+        <appender-ref ref="GENERAL_FILE_APPENDER"/>
+    </root>
+</configuration>
