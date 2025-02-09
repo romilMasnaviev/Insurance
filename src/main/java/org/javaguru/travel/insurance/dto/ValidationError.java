@@ -10,14 +10,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ValidationError {
-    private String field;
-    private String message;
+    private String errorCode;
+    private String description;
 
     @Override
     public String toString() {
         return "ValidationError{" +
-                "field='" + field + '\'' +
-                ", message='" + message + '\'' +
+                "errorCode='" + errorCode + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

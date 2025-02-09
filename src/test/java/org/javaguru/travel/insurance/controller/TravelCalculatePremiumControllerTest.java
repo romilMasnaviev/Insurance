@@ -19,13 +19,13 @@ import static uk.org.webcompere.modelassert.json.JsonAssertions.assertJson;
 class TravelCalculatePremiumControllerTest {
 
     @Autowired
-    MockMvc mockMvc;
+    private MockMvc mockMvc;
 
     @Autowired
-    ObjectMapper mapper;
+    private ObjectMapper mapper;
 
     @Autowired
-    JsonFileReader reader;
+    private JsonFileReader reader;
 
     @Test
     void testCalculatePremium_WhenGivenValidData_ThenReturnResponse() throws Exception {
@@ -112,8 +112,9 @@ class TravelCalculatePremiumControllerTest {
         String actualResponse = mvcResult.getResponse().getContentAsString();
         assertJson(expectedResponse)
                 .where()
-                .keysInAnyOrder()
                 .arrayInAnyOrder()
+                .keysInAnyOrder()
                 .isEqualTo(actualResponse);
+
     }
 }

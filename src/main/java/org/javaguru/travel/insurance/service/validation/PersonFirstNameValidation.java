@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
+import org.javaguru.travel.insurance.service.ErrorConfig;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -12,10 +13,12 @@ import java.util.Optional;
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class PersonFirstNameValidation implements RequestValidation {
 
+    private final ErrorConfig errorConfig;
+
     @Override
     public Optional<ValidationError> execute(TravelCalculatePremiumRequest request) {
         return (request.getPersonFirstName() == null || request.getPersonFirstName().isEmpty()) ?
-                Optional.of(new ValidationError("personFirstName", "Must not be empty!")) :
+                Optional.of(errorConfig.buildError("ERROR_CODE_1")) :
                 Optional.empty();
     }
 }

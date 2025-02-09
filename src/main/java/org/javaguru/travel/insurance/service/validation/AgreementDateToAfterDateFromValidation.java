@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
+import org.javaguru.travel.insurance.service.ErrorConfig;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -12,6 +13,8 @@ import java.util.Optional;
 @Component
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class AgreementDateToAfterDateFromValidation implements RequestValidation {
+
+    private final ErrorConfig errorConfig;
 
     @Override
     public Optional<ValidationError> execute(TravelCalculatePremiumRequest request) {
@@ -23,8 +26,7 @@ class AgreementDateToAfterDateFromValidation implements RequestValidation {
         }
 
         return !to.after(from) ?
-                Optional.of(new ValidationError("AgreementDateTo",
-                        "must be after AgreementDateFrom")) :
+                Optional.of(errorConfig.buildError("ERROR_CODE_8")) :
                 Optional.empty();
     }
 
