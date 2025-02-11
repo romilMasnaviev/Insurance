@@ -1,9 +1,12 @@
 package org.javaguru.travel.insurance.controller;
 
 import com.google.common.base.Stopwatch;
-import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
-import org.javaguru.travel.insurance.dto.TravelCalculatePremiumResponse;
-import org.javaguru.travel.insurance.service.TravelCalculatePremiumService;
+import org.javaguru.travel.insurance.controller.logger.TravelCalculateExecutionTimeLogger;
+import org.javaguru.travel.insurance.controller.logger.TravelCalculateRequestLogger;
+import org.javaguru.travel.insurance.controller.logger.TravelCalculateResponseLogger;
+import org.javaguru.travel.insurance.dto.request.TravelCalculatePremiumRequest;
+import org.javaguru.travel.insurance.dto.response.TravelCalculatePremiumResponse;
+import org.javaguru.travel.insurance.service.api.TravelCalculatePremiumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
