@@ -39,7 +39,7 @@
 
     <!--Логер для request-->
     <!--Указываю additivity=false чтобы не было наследования от корневого логера-->
-    <logger name="org.romilMasnaviev.travel.insurance.controller.logger.TravelCalculateRequestLogger"
+    <logger name="org.javaguru.travel.insurance.controller.logger.TravelCalculateRequestLogger"
             level="info"
             additivity="false">
         <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER"/>
@@ -47,7 +47,7 @@
 
     <!--Логер для response-->
     <!--Указываю additivity=false чтобы не было наследования от корневого логера-->
-    <logger name="org.romilMasnaviev.travel.insurance.controller.logger.TravelCalculateResponseLogger"
+    <logger name="org.javaguru.travel.insurance.controller.logger.TravelCalculateResponseLogger"
             level="info"
             additivity="false">
         <appender-ref ref="REQUEST_RESPONSE_FILE_APPENDER"/>
