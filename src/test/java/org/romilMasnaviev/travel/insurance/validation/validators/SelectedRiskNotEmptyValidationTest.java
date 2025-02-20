@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -29,8 +30,9 @@ class SelectedRiskNotEmptyValidationTest {
         TravelCalculatePremiumRequest request = TravelCalculatePremiumRequest.builder().build();
 
         when(validationErrorFactory.buildError("ERROR_CODE_5")).thenReturn(new ValidationError("ERROR_CODE_5", "Field selectedRisks is Empty!"));
-        Optional<ValidationError> optionalValidationError = riskNotEmptyValidation.execute(request);
+        Optional<ValidationError> optionalValidationError = riskNotEmptyValidation.validate(request);
 
+        assertTrue(optionalValidationError.isPresent());
         assertThat(optionalValidationError.get().getErrorCode()).isEqualTo("ERROR_CODE_5");
         assertThat(optionalValidationError.get().getDescription()).isEqualTo("Field selectedRisks is Empty!");
     }
@@ -40,8 +42,9 @@ class SelectedRiskNotEmptyValidationTest {
         TravelCalculatePremiumRequest request = TravelCalculatePremiumRequest.builder().selectedRisks(List.of("")).build();
 
         when(validationErrorFactory.buildError("ERROR_CODE_5")).thenReturn(new ValidationError("ERROR_CODE_5", "Field selectedRisks is Empty!"));
-        Optional<ValidationError> optionalValidationError = riskNotEmptyValidation.execute(request);
+        Optional<ValidationError> optionalValidationError = riskNotEmptyValidation.validate(request);
 
+        assertTrue(optionalValidationError.isPresent());
         assertThat(optionalValidationError.get().getErrorCode()).isEqualTo("ERROR_CODE_5");
         assertThat(optionalValidationError.get().getDescription()).isEqualTo("Field selectedRisks is Empty!");
     }
@@ -50,7 +53,7 @@ class SelectedRiskNotEmptyValidationTest {
     void whenSelectedRiskValid_thenNoErrors() {
         TravelCalculatePremiumRequest request = TravelCalculatePremiumRequest.builder().selectedRisks(List.of("not empty")).build();
 
-        Optional<ValidationError> optionalValidationError = riskNotEmptyValidation.execute(request);
+        Optional<ValidationError> optionalValidationError = riskNotEmptyValidation.validate(request);
 
         assertThat(optionalValidationError.isEmpty()).isTrue();
     }

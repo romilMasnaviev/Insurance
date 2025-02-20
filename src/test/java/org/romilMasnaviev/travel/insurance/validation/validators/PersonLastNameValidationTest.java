@@ -12,6 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.romilMasnaviev.travel.insurance.TestData.normalLastName;
 import static org.mockito.Mockito.when;
 
@@ -31,8 +32,9 @@ class PersonLastNameValidationTest {
                 .build();
 
         when(validationErrorFactory.buildError("ERROR_CODE_2")).thenReturn(new ValidationError("ERROR_CODE_2", "Field personLastName is empty!"));
-        Optional<ValidationError> optionalValidationError = lastNameValidation.execute(request);
+        Optional<ValidationError> optionalValidationError = lastNameValidation.validate(request);
 
+        assertTrue(optionalValidationError.isPresent());
         assertThat(optionalValidationError.get().getErrorCode()).isEqualTo("ERROR_CODE_2");
         assertThat(optionalValidationError.get().getDescription()).isEqualTo("Field personLastName is empty!");
     }
@@ -43,8 +45,9 @@ class PersonLastNameValidationTest {
                 .build();
 
         when(validationErrorFactory.buildError("ERROR_CODE_2")).thenReturn(new ValidationError("ERROR_CODE_2", "Field personLastName is empty!"));
-        Optional<ValidationError> optionalValidationError = lastNameValidation.execute(request);
+        Optional<ValidationError> optionalValidationError = lastNameValidation.validate(request);
 
+        assertTrue(optionalValidationError.isPresent());
         assertThat(optionalValidationError.get().getErrorCode()).isEqualTo("ERROR_CODE_2");
         assertThat(optionalValidationError.get().getDescription()).isEqualTo("Field personLastName is empty!");
     }
@@ -55,7 +58,7 @@ class PersonLastNameValidationTest {
                 .personLastName(normalLastName)
                 .build();
 
-        Optional<ValidationError> optionalValidationError = lastNameValidation.execute(request);
+        Optional<ValidationError> optionalValidationError = lastNameValidation.validate(request);
 
         assertThat(optionalValidationError.isEmpty()).isTrue();
     }

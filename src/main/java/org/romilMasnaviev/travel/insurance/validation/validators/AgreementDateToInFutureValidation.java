@@ -13,12 +13,12 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
-class AgreementDateToInFutureValidation implements RequestValidation {
+class AgreementDateToInFutureValidation extends TravelRequestValidationImpl {
 
     private final ValidationErrorFactory validationErrorFactory;
 
     @Override
-    public Optional<ValidationError> execute(TravelCalculatePremiumRequest request) {
+    public Optional<ValidationError> validate(TravelCalculatePremiumRequest request) {
         if (request.getAgreementDateTo() == null) {
             return Optional.empty();
         }

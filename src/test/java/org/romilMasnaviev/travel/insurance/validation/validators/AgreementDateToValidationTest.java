@@ -12,6 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.romilMasnaviev.travel.insurance.TestUtils.futureDate;
 import static org.mockito.Mockito.when;
 
@@ -30,8 +31,9 @@ class AgreementDateToValidationTest {
                 .build();
 
         when(validationErrorFactory.buildError("ERROR_CODE_4")).thenReturn(new ValidationError("ERROR_CODE_4", "Field agreementDateTo is Empty!"));
-        Optional<ValidationError> optionalValidationError = dateToValidation.execute(request);
+        Optional<ValidationError> optionalValidationError = dateToValidation.validate(request);
 
+        assertTrue(optionalValidationError.isPresent());
         assertThat(optionalValidationError.get().getErrorCode()).isEqualTo("ERROR_CODE_4");
         assertThat(optionalValidationError.get().getDescription()).isEqualTo("Field agreementDateTo is Empty!");
 
@@ -43,7 +45,7 @@ class AgreementDateToValidationTest {
                 .agreementDateTo(futureDate(1))
                 .build();
 
-        Optional<ValidationError> optionalValidationError = dateToValidation.execute(request);
+        Optional<ValidationError> optionalValidationError = dateToValidation.validate(request);
 
         assertThat(optionalValidationError.isEmpty()).isTrue();
     }

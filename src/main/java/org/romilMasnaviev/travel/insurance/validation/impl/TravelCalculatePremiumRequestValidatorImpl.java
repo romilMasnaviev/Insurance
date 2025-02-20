@@ -27,7 +27,8 @@ class TravelCalculatePremiumRequestValidatorImpl implements TravelCalculatePremi
         List<ValidationError> errors = new ArrayList<>();
 
         for (RequestValidation validation : travelValidations) {
-            validation.execute(request).ifPresent(errors::add);
+            validation.validate(request).ifPresent(errors::add);
+            validation.validateList(request).ifPresent(errors::addAll);
         }
         return errors;
     }
