@@ -28,7 +28,7 @@ class TravelCalculatePremiumRequestValidatorImpl implements TravelCalculatePremi
 
         for (RequestValidation validation : travelValidations) {
             validation.validate(request).ifPresent(errors::add);
-            validation.validateList(request).ifPresent(errors::addAll);
+            errors.addAll(validation.validateList(request));
         }
         return errors;
     }

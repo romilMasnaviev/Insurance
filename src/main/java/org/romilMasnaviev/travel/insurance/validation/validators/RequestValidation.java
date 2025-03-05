@@ -10,5 +10,5 @@ public interface RequestValidation {
 
     Optional<ValidationError> validate(TravelCalculatePremiumRequest request);
 
-    Optional<List<ValidationError>> validateList(TravelCalculatePremiumRequest request);
+    List<ValidationError> validateList(TravelCalculatePremiumRequest request);
 }

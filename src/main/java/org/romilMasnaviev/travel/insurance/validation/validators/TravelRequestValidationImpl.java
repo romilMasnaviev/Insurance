@@ -13,7 +13,7 @@ abstract class TravelRequestValidationImpl implements RequestValidation {
     }
 
     @Override
-    public Optional<List<ValidationError>> validateList(TravelCalculatePremiumRequest request) {
-        return Optional.empty();
+    public List<ValidationError> validateList(TravelCalculatePremiumRequest request) {
+        return List.of();
     }
 }

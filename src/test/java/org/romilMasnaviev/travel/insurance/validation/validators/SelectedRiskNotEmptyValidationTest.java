@@ -1,13 +1,13 @@
 package org.romilMasnaviev.travel.insurance.validation.validators;
 
-import org.romilMasnaviev.travel.insurance.dto.request.TravelCalculatePremiumRequest;
-import org.romilMasnaviev.travel.insurance.dto.response.ValidationError;
-import org.romilMasnaviev.travel.insurance.validation.factory.ValidationErrorFactory;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.romilMasnaviev.travel.insurance.dto.request.TravelCalculatePremiumRequest;
+import org.romilMasnaviev.travel.insurance.dto.response.ValidationError;
+import org.romilMasnaviev.travel.insurance.validation.factory.ValidationErrorFactory;
 
 import java.util.List;
 import java.util.Optional;

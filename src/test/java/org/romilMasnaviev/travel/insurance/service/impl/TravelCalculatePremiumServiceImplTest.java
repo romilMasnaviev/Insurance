@@ -1,22 +1,22 @@
 package org.romilMasnaviev.travel.insurance.service.impl;
 
-import org.romilMasnaviev.travel.insurance.dto.request.TravelCalculatePremiumRequest;
-import org.romilMasnaviev.travel.insurance.dto.response.TravelCalculatePremiumResponse;
-import org.romilMasnaviev.travel.insurance.validation.api.TravelCalculatePremiumRequestValidator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.romilMasnaviev.travel.insurance.dto.request.TravelCalculatePremiumRequest;
+import org.romilMasnaviev.travel.insurance.dto.response.TravelCalculatePremiumResponse;
+import org.romilMasnaviev.travel.insurance.validation.api.TravelCalculatePremiumRequestValidator;
 
 import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 import static org.romilMasnaviev.travel.insurance.TestData.normalFirstName;
 import static org.romilMasnaviev.travel.insurance.TestData.normalLastName;
 import static org.romilMasnaviev.travel.insurance.TestUtils.futureDate;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class TravelCalculatePremiumServiceImplTest {

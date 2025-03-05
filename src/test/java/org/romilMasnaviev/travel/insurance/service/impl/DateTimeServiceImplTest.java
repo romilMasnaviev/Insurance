@@ -1,7 +1,7 @@
 package org.romilMasnaviev.travel.insurance.service.impl;
 
-import org.romilMasnaviev.travel.insurance.service.api.DateTimeService;
 import org.junit.jupiter.api.Test;
+import org.romilMasnaviev.travel.insurance.service.api.DateTimeService;
 
 import java.math.BigDecimal;
 import java.util.Date;
