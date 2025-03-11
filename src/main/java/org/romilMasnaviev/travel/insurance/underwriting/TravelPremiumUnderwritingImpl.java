@@ -13,30 +13,21 @@ import java.util.List;
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelPremiumUnderwritingImpl implements TravelPremiumUnderwriting {
 
-    private final List<TravelRiskPremiumCalculator> calculators;
+    private final SelectedRisksPremiumCalculator selectedRisksPremiumCalculator;
 
     public TravelCalculationResult calculatePremium(TravelCalculatePremiumRequest request) {
-        List<RiskPremium> riskPremiums = request.getSelectedRisks().stream()
-                .map(riskIc ->
-                        new RiskPremium(riskIc, calculatePremiumForRisk(riskIc, request))
-                ).toList();
-
-        BigDecimal totalPremium = riskPremiums.stream()
-                .map(RiskPremium::getPremium)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-
+        List<RiskPremium> riskPremiums = calculateSelectedRisksPremium(request);
+        BigDecimal totalPremium = calculateTotalPremium(riskPremiums);
         return new TravelCalculationResult(totalPremium, riskPremiums);
     }
 
-    private BigDecimal calculatePremiumForRisk(String riskIc, TravelCalculatePremiumRequest request) {
-        var riskPremiumCalculator = findRiskPremiumCalculator(riskIc);
-        return riskPremiumCalculator.calculatePremium(request);
+    private List<RiskPremium> calculateSelectedRisksPremium(TravelCalculatePremiumRequest request) {
+        return selectedRisksPremiumCalculator.calculatePremiumsForAllRisks(request);
     }
 
-    private TravelRiskPremiumCalculator findRiskPremiumCalculator(String riskIc) {
-        return calculators.stream().
-                filter(c -> c.getRiskIc().equals(riskIc))
-                .findFirst()
-                .orElseThrow(() -> new RuntimeException("Not supported riskIc = " + riskIc));
+    private BigDecimal calculateTotalPremium(List<RiskPremium> riskPremiums) {
+        return riskPremiums.stream()
+                .map(RiskPremium::getPremium)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }

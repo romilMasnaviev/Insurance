@@ -1,15 +1,25 @@
 INSERT INTO classifiers(title, description)
-VALUES ('RISK_TYPE', 'travel policy risk type classifier');
+VALUES ('RISK_TYPE', 'travel policy risk type classifier'),
+       ('COUNTRY', 'Country classifier');
 
-SET @id = LAST_INSERT_ID();
+SET @risk_type_id_cl = (SELECT id AS rt
+                        FROM classifiers
+                        WHERE title = 'RISK_TYPE');
 
 INSERT INTO classifier_values(classifier_id, ic, description)
-VALUES (@id, 'TRAVEL_MEDICAL', 'Covers medical expenses during travel'),
-       (@id, 'TRAVEL_CANCELLATION', 'Covers trip cancellation costs'),
-       (@id, 'TRAVEL_LOSS_BAGGAGE', 'Covers loss or damage to baggage'),
-       (@id, 'TRAVEL_THIRD_PARTY_LIABILITY', 'Covers damages caused to third parties'),
-       (@id, 'TRAVEL_EVACUATION', 'Covers emergency evacuation costs'),
-       (@id, 'TRAVEL_SPORT_ACTIVITIES', 'Covers risks related to sport activities during travel');
+VALUES (@risk_type_id_cl, 'TRAVEL_MEDICAL', 'Covers medical expenses during travel'),
+       (@risk_type_id_cl, 'TRAVEL_CANCELLATION', 'Covers trip cancellation costs'),
+       (@risk_type_id_cl, 'TRAVEL_LOSS_BAGGAGE', 'Covers loss or damage to baggage'),
+       (@risk_type_id_cl, 'TRAVEL_THIRD_PARTY_LIABILITY', 'Covers damages caused to third parties'),
+       (@risk_type_id_cl, 'TRAVEL_EVACUATION', 'Covers emergency evacuation costs'),
+       (@risk_type_id_cl, 'TRAVEL_SPORT_ACTIVITIES', 'Covers risks related to sport activities during travel');
 
+SET @country_id_cl = (SELECT id AS rt
+                      FROM classifiers
+                      WHERE title = 'RISK_TYPE');
 
+INSERT INTO classifier_values(classifier_id, ic, description)
+VALUES (@country_id_cl, 'LATVIA', 'Country Latvia'),
+       (@country_id_cl, 'SPAIN', 'Country Spain'),
+       (@country_id_cl, 'JAPAN', 'Country Japan');
 

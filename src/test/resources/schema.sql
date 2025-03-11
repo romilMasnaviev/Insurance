@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS classifiers
     PRIMARY KEY (id)
 );
 
+
 CREATE UNIQUE INDEX ix_classifiers_title ON classifiers (title);
 
 
