@@ -1,10 +1,9 @@
-package org.romilMasnaviev.travel.insurance.validation.impl;
+package org.romilMasnaviev.travel.insurance.validation;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.romilMasnaviev.travel.insurance.dto.request.TravelCalculatePremiumRequest;
 import org.romilMasnaviev.travel.insurance.dto.response.ValidationError;
-import org.romilMasnaviev.travel.insurance.validation.api.TravelCalculatePremiumRequestValidator;
 import org.romilMasnaviev.travel.insurance.validation.validators.RequestValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

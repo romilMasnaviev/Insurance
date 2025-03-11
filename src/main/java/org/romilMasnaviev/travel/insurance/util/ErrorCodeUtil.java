@@ -1,4 +1,4 @@
-package org.romilMasnaviev.travel.insurance.validation.config;
+package org.romilMasnaviev.travel.insurance.util;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +11,7 @@ import java.util.List;
 @Configuration
 @PropertySource("classpath:errorCodes.properties")
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
-public class ErrorConfig {
+public class ErrorCodeUtil {
 
     private final Environment environment;
 

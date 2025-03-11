@@ -1,4 +1,4 @@
-package org.romilMasnaviev.travel.insurance.controller.logger;
+package org.romilMasnaviev.travel.insurance.controller;
 
 import com.google.common.base.Stopwatch;
 import org.slf4j.Logger;

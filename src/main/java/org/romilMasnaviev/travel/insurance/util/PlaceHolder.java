@@ -1,4 +1,4 @@
-package org.romilMasnaviev.travel.insurance.validation.config;
+package org.romilMasnaviev.travel.insurance.util;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

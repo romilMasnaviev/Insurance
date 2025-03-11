@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.romilMasnaviev.travel.insurance.dto.request.TravelCalculatePremiumRequest;
 import org.romilMasnaviev.travel.insurance.dto.response.ValidationError;
 import org.romilMasnaviev.travel.insurance.repository.ClassifierValueRepository;
-import org.romilMasnaviev.travel.insurance.validation.config.PlaceHolder;
+import org.romilMasnaviev.travel.insurance.util.PlaceHolder;
 import org.romilMasnaviev.travel.insurance.validation.factory.ValidationErrorFactory;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package org.romilMasnaviev.travel.insurance.service.api;
+package org.romilMasnaviev.travel.insurance.underwriting;
 
 import org.romilMasnaviev.travel.insurance.dto.request.TravelCalculatePremiumRequest;
 

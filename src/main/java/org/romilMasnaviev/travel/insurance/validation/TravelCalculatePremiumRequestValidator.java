@@ -1,4 +1,4 @@
-package org.romilMasnaviev.travel.insurance.validation.api;
+package org.romilMasnaviev.travel.insurance.validation;
 
 import org.romilMasnaviev.travel.insurance.dto.request.TravelCalculatePremiumRequest;
 import org.romilMasnaviev.travel.insurance.dto.response.ValidationError;
