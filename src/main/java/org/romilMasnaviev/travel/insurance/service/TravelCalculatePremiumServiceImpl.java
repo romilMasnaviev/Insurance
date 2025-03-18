@@ -38,8 +38,8 @@ class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService
                 .agreementDateTo(request.getAgreementDateTo())
                 .personFirstName(request.getPersonFirstName())
                 .personLastName(request.getPersonLastName())
-                .agreementPremium(result.getTotalPremium())
-                .risks(result.getRiskPremiums())
+                .agreementPremium(result.totalPremium())
+                .risks(result.riskPremiums())
                 .country(request.getCountry())
                 .build();
     }

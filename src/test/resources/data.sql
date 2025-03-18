@@ -8,7 +8,7 @@ SET @risk_type_id_cl = (SELECT id AS rt
 
 SET @country_id_cl = (SELECT id AS rt
                       FROM classifiers
-                      WHERE title = 'RISK_TYPE');
+                      WHERE title = 'COUNTRY');
 
 INSERT INTO classifier_values(classifier_id, ic, description)
 VALUES (@risk_type_id_cl, 'TRAVEL_MEDICAL', 'Covers medical expenses during travel'),

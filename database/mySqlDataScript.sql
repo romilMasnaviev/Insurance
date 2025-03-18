@@ -16,7 +16,7 @@ VALUES (@risk_type_id_cl, 'TRAVEL_MEDICAL', 'Covers medical expenses during trav
 
 SET @country_id_cl = (SELECT id AS rt
                       FROM classifiers
-                      WHERE title = 'RISK_TYPE');
+                      WHERE title = 'COUNTRY');
 INSERT INTO classifier_values(classifier_id, ic, description)
 VALUES (@country_id_cl, 'LATVIA', 'Country Latvia'),
        (@country_id_cl, 'SPAIN', 'Country Spain'),

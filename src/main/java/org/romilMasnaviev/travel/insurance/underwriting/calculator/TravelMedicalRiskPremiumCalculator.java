@@ -31,7 +31,10 @@ class TravelMedicalRiskPremiumCalculator implements TravelRiskPremiumCalculator 
     }
 
     private BigDecimal findCountryDefaultDayRate(TravelCalculatePremiumRequest request) {
-        return countryDefaultDayRateRepository.findByCountryIc(request.getCountry()).map(CountryDefaultDayRate::getDefaultDayRate).orElseThrow(() -> new RuntimeException("Country day rate not found by country id = " + request.getCountry()));
+        return countryDefaultDayRateRepository.findByCountryIc(request.getCountry())
+                .map(CountryDefaultDayRate::getDefaultDayRate)
+                .orElseThrow(() ->
+                        new RuntimeException("Country day rate not found by country id = " + request.getCountry()));
     }
 
     private BigDecimal calculateDaysBetween(TravelCalculatePremiumRequest request) {
