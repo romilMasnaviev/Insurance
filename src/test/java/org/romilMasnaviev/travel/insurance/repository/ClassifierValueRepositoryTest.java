@@ -72,14 +72,12 @@ class ClassifierValueRepositoryTest {
     }
 
 
-
     private void findByClassifierAndIc_WhenClassifierAndIcExist_ShouldReturnClassifierValue(String classifierTitle, String ic) {
         var classifierValueOptional = repository.findByClassifierAndIc(classifierTitle, ic);
         assertTrue(classifierValueOptional.isPresent());
-        assertEquals(ic,classifierValueOptional.get().getIc());
+        assertEquals(ic, classifierValueOptional.get().getIc());
         assertEquals(classifierTitle, classifierValueOptional.get().getClassifier().getTitle());
 
     }
-
 
 }
