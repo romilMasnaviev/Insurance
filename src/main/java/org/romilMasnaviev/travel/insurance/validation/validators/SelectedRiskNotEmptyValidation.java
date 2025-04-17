@@ -14,7 +14,7 @@ import java.util.Optional;
 class SelectedRiskNotEmptyValidation extends TravelRequestValidationImpl {
 
     private final ValidationErrorFactory validationErrorFactory;
-
+    //TODO
     @Override
     public Optional<ValidationError> validate(TravelCalculatePremiumRequest request) {
         if (request.getSelectedRisks() == null || request.getSelectedRisks().stream().anyMatch(String::isEmpty)) {

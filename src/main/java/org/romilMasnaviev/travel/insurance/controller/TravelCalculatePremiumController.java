@@ -1,10 +1,11 @@
 package org.romilMasnaviev.travel.insurance.controller;
 
 import com.google.common.base.Stopwatch;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import org.romilMasnaviev.travel.insurance.dto.request.TravelCalculatePremiumRequest;
 import org.romilMasnaviev.travel.insurance.dto.response.TravelCalculatePremiumResponse;
 import org.romilMasnaviev.travel.insurance.service.TravelCalculatePremiumService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,23 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/insurance/travel")
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 class TravelCalculatePremiumController {
 
     private final TravelCalculatePremiumService calculatePremiumService;
     private final TravelCalculateRequestLogger requestLogger;
     private final TravelCalculateResponseLogger responseLogger;
     private final TravelCalculateExecutionTimeLogger timeLogger;
-
-    @Autowired
-    TravelCalculatePremiumController(TravelCalculatePremiumService calculatePremiumService,
-                                     TravelCalculateRequestLogger requestLogger,
-                                     TravelCalculateResponseLogger responseLogger,
-                                     TravelCalculateExecutionTimeLogger timeLogger) {
-        this.calculatePremiumService = calculatePremiumService;
-        this.requestLogger = requestLogger;
-        this.responseLogger = responseLogger;
-        this.timeLogger = timeLogger;
-    }
 
     @PostMapping(path = "/",
             consumes = "application/json",
