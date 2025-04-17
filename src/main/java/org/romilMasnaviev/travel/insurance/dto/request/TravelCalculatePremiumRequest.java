@@ -16,8 +16,10 @@ public class TravelCalculatePremiumRequest {
     private String personFirstName;
     private String personLastName;
     @JsonFormat(pattern = "yyyy-MM-dd")
+    //Дата начала договора
     private Date agreementDateFrom;
     @JsonFormat(pattern = "yyyy-MM-dd")
+    //Дата окончания договора
     private Date agreementDateTo;
     @JsonProperty("selected_risks")
     private List<String> selectedRisks;

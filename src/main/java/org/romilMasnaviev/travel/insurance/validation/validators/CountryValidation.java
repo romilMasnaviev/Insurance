@@ -17,14 +17,14 @@ class CountryValidation extends TravelRequestValidationImpl {
 
     @Override
     public Optional<ValidationError> validate(TravelCalculatePremiumRequest request) {
-        return containsTravelMedical(request) && countryIsNullOrBlank(request) ?
+        return countryIsNullOrBlank(request) ?
                 Optional.of(validationErrorFactory.buildError("ERROR_CODE_10")) :
                 Optional.empty();
     }
 
-    private boolean containsTravelMedical(TravelCalculatePremiumRequest request) {
-        return request.getCountry() != null && request.getSelectedRisks().contains("TRAVEL_MEDICAL");
-    }
+//    private boolean containsTravelMedical(TravelCalculatePremiumRequest request) {
+//        return request.getCountry() != null && request.getSelectedRisks().contains("TRAVEL_MEDICAL");
+//    }
 
     private boolean countryIsNullOrBlank(TravelCalculatePremiumRequest request) {
         return request.getCountry() == null || request.getCountry().isBlank();
