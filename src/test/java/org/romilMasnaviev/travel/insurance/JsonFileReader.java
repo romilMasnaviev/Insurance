@@ -8,7 +8,7 @@ import java.nio.file.Files;
 
 @Component
 public class JsonFileReader {
-    public String readJsonFromFile(String filePath) {
+    public static String readJsonFromFile(String filePath) {
         try {
             File file = ResourceUtils.getFile("classpath:" + filePath);
             return new String(Files.readAllBytes(file.toPath()));
